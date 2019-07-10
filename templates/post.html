@@ -1,0 +1,22 @@
+{% extends "body.html" %}
+
+{% block content %}
+<!-- Main -->
+<section class="post">
+    {% if page.params.content_img_path %}
+    <img class="header-image" src="{{ page.params.content_img_path | relative_url }}" alt=""/>
+    {% endif %}
+    <header class="hero">
+        <div class="copy">
+            <h1>{{ page.title }}</h1>
+            {% if page.params.subtitle %}
+            <h3>{{ page.params.subtitle | safe }}</h3>
+            {% endif %}
+            <h3 class="publish-date">{{ page.date | date_format("%A, %B %e, %Y") }}</h3>
+        </div>
+    </header>
+    <div class="content">
+        {{ page.content }}
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,296 @@
+stackbitVersion: ~0.2.34
+uploadDir: images
+metadata:
+  title: Vanilla
+  description: Stackbit Vanilla theme
+  author: Stackbit
+  authorURL: 'https://www.stackbit.com'
+  images:
+    small: images/demo-256x192.png
+    large: images/demo-1024x768.png
+collections:
+  - label: Home
+    source: pages
+    create: true
+    models:
+      - home
+  - label: Pages
+    source: pages
+    create: true
+    models:
+      - page
+      - generic
+  - label: Posts
+    source: pages
+    create: true
+    models:
+      - post
+sourceMapping:
+  - source:
+      fieldPath: author.name
+    target:
+      file: data/author.json
+      fieldPath: name
+  - source:
+      fieldPath: author.name
+    target:
+      file: data/header.yml
+      fieldPath: content
+  - source:
+      fieldPath: author.avatar
+    target:
+      file: data/author.json
+      fieldPath: avatar
+  - source:
+      fieldPath: author.avatar
+    target:
+      file: content/index.md
+      fieldPath: 'sections[0].image'
+models:
+  config:
+    type: config
+    label: Global Site Config
+    fields:
+      - type: string
+        name: none
+        label: None
+        hidden: true
+        description: 'An empty var, used so the site params section will function'
+  header:
+    type: data
+    file: header.yml
+    label: Header Configuration
+    fields:
+      - type: markdown
+        name: content
+        label: Header Content
+      - type: boolean
+        name: has_nav
+        label: Navigation Menu
+        description: Display the navigation bar in the header
+        default: true
+  footer:
+    type: data
+    file: footer.yml
+    label: Footer Configuration
+    fields:
+      - type: markdown
+        name: content
+        label: Footer Content
+      - type: list
+        name: links
+        label: Links
+        description: A list of links to display in the footer of the site
+        items:
+          type: object
+          labelField: text
+          fields:
+            - type: string
+              name: text
+              label: Link text
+            - type: string
+              name: url
+              label: URL
+              widget: url
+            - type: boolean
+              name: new_window
+              label: Open in new window
+              default: true
+  social:
+    type: data
+    file: social.json
+    label: Social Links
+    fields:
+      - type: list
+        name: links
+        label: Social Links
+        description: A list of social links displayed on the left side.
+        items:
+          type: object
+          labelField: type
+          fields:
+            - type: string
+              name: type
+              label: Type
+              required: true
+            - type: string
+              name: url
+              label: URL
+              widget: url
+  author:
+    type: data
+    file: author.json
+    label: Author
+    fields:
+      - type: string
+        name: name
+        label: Name
+      - type: string
+        name: email
+        label: Email
+      - type: image
+        name: avatar
+        label: Avatar
+  home:
+    type: page
+    label: Home
+    hideContent: true
+    template: home
+    singleInstance: true
+    file: index.md
+    fields:
+      - type: string
+        name: title
+        label: Title
+        description: The title of the page
+        required: true
+      - type: list
+        name: sections
+        label: Sections
+        description: Home sections
+        items:
+          type: reference
+          labelField: title
+          models:
+            - postlist
+            - contentblock
+            - textimageblock
+            - heroblock
+  page:
+    type: page
+    label: Page
+    template: page
+    exclude: posts/**
+    fields:
+      - type: string
+        name: title
+        label: Title
+        description: The title of the page
+        required: true
+      - type: string
+        name: subtitle
+        label: Subtitle
+        description: Text that is shown just above the title
+  post:
+    type: page
+    label: Post
+    folder: posts
+    template: post
+    fields:
+      - type: string
+        name: title
+        label: Title
+        description: The title of the page
+        required: true
+      - type: string
+        name: subtitle
+        label: Subtitle
+        description: Text that is shown just above the title
+      - type: image
+        name: content_img_path
+        label: Image
+        description: The image shown on top of the page
+      - type: string
+        name: excerpt
+        label: Home Excerpt
+        description: Excerpt to be displayed in any thumbnails for the post
+      - type: date
+        name: date
+        label: Date
+        required: true
+      - type: image
+        name: thumb_img_path
+        label: Alternate Image
+        description: image to be displayed in any thumbnails for the post
+  action:
+    type: object
+    label: Action
+    labelField: label
+    fields:
+      - type: string
+        name: label
+        label: Label
+      - type: string
+        name: url
+        label: URL
+        widget: url
+  section:
+    type: object
+    label: Section
+    labelField: title
+    fields:
+      - type: string
+        name: title
+        label: Section Title
+        description: >-
+          The section title (Used by the CMS, even if it is not displayed in the
+          section)
+      - type: string
+        name: section_id
+        label: Element ID
+      - type: string
+        name: component
+        label: Component
+        required: true
+        hidden: true
+  postlist:
+    type: object
+    label: Post List
+    extends:
+      - section
+    fields:
+      - type: number
+        name: num_posts_displayed
+        label: Number of displayed posts
+        required: true
+      - name: component
+        const: postlist.html
+  contentblock:
+    type: object
+    label: Content Section
+    extends:
+      - section
+    fields:
+      - name: component
+        const: content_block.html
+      - type: markdown
+        name: content
+        label: Content
+        description: The text content of the section
+  textimageblock:
+    type: object
+    label: Content Section With Image
+    extends:
+      - section
+    fields:
+      - name: component
+        const: text_image_block.html
+      - type: markdown
+        name: text
+        label: Text
+        description: The text content of the section
+      - type: image
+        name: image
+        label: Image
+        description: The image to display with the text
+  heroblock:
+    type: object
+    label: Hero Header With Image
+    extends:
+      - section
+    fields:
+      - name: component
+        const: hero_block.html
+      - type: markdown
+        name: subtitle
+        label: Subtitle
+        description: The subtitle of the header section
+      - type: image
+        name: image
+        label: Image
+        description: The image to display with the text
+stackbit_banner:
+  show_banner: true
+  name: Vanilla
+  create_url: 'https://app.stackbit.com/wizard?theme=vanilla'
+  github_url: 'https://github.com/stackbithq/stackbit-theme-vanilla'

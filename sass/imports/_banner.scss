@@ -1,0 +1,14 @@
+body.has-theme-bar {
+  .theme-bar {
+    .theme-bar-button {
+      &:after {
+        content: '';
+        background: none;
+        height: auto;
+      }
+    }
+  }
+  .wrapper {
+    padding-top: 60px;
+  }
+}

@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,700');
+
+html,
+body {
+    font-size: $tiny;
+    font-family: $roboto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    @media screen and (max-width: $tablet) { font-size: ($tiny * 0.8); }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0 0 0.5rem;
+    font-weight: $bold;
+    letter-spacing: 0.02em;
+    line-height: 1.2em;
+}
+
+h1 {
+    font-size: 2.5rem;
+
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+h4 {
+    font-size: 1.2rem;
+}
+
+h5 {
+    font-size: 1rem;
+}
+
+h6 {
+    font-size: 0.8rem;
+}
+
+p {
+    font-size: 1rem;
+    line-height: 1.5em;
+    margin: 0 0 1em 0;
+    font-weight: $light;
+}
+
+ul {
+    list-style-type: square;
+    margin: 1rem 0;
+    padding: 0 0 0 2.5rem;
+    font-weight: $light;
+}
+
+ol {
+    padding: 0;
+    padding-left: 1rem;
+}
+
+li {
+    line-height: 1.55rem;
+
+    &:not(:last-child) {
+        margin-bottom: 0.5rem;
+    }
+}
+
+strong {
+    font-weight: $bold;
+}
+
+pre {
+    font-size: 0.8rem;
+}

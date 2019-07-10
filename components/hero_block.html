@@ -1,0 +1,10 @@
+<!-- Section -->
+<section id="{{ include_dict.section.section_id }}" class="hero">
+    {% if include_dict.section.image or site.data.author.avatar %}<img src="{% if include_dict.section.image %}{{ include_dict.section.image | relative_url }}{% else %}{{ site.data.author.avatar | relative_url }}{% endif %}"/>{% endif %}
+    {% if include_dict.section.title %}
+    <div class="copy">
+        <h1>{{ include_dict.section.title }}</h1>
+        {{ include_dict.section.subtitle | markdownify }}
+    </div>
+    {% endif %}
+</section>

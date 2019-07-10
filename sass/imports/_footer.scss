@@ -1,0 +1,22 @@
+.footer {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 1.5rem 0;
+    border-top: 2px solid rgba(0, 0, 0, .05);
+    font-size: 12px;
+
+    .copyright > p {
+        color: rgba(0, 0, 0, .65);
+        margin: 0;
+        font-size: inherit;
+        font-style: italic;
+        line-height: inherit;
+        font-weight: inherit;
+    }
+
+    .subtle-link:not(:last-child) {
+        margin-right: 1rem;
+    }
+}

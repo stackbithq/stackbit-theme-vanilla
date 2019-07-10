@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div class="wrapper">
+    {% include "header.html" %}
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+    {% include "footer.html" %}
+</div>
+{% endblock %}

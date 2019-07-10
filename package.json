@@ -1,0 +1,26 @@
+{
+  "name": "vanilla",
+  "version": "1.0.0",
+  "description": "A vanilla theme for Stackbit",
+  "main": "public/index.html",
+  "scripts": {
+    "build": "unibit build",
+    "develop": "unibit develop",
+    "start": "unibit develop",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stackbithq/stackbit-theme-vanilla"
+  },
+  "author": "Stackbit",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stackbithq/stackbit-theme-vanilla/issues"
+  },
+  "homepage": "https://docs.stackbit.com/unibit/",
+  "dependencies": {
+    "@stackbit/unibit": "~0.1.11",
+    "nodemon": "^1.19.1"
+  }
+}

@@ -1,0 +1,55 @@
+.header {
+    position: relative;
+    display: flex;
+    min-height: 5rem;
+    justify-content: space-between;
+    align-items: stretch;
+    border-bottom: 2px solid rgba(0, 0, 0, .05);
+    margin-bottom: 2.5rem;
+
+    .logo {
+        color: black;
+        font-size: 1.5rem;
+        line-height: 5rem;
+
+        @media screen and (max-width: $tablet) {
+            text-align: center;
+            width: 100%;
+            margin-bottom: 1rem;
+        }
+    }
+
+    nav {
+        display: flex;
+        align-items: stretch;
+
+        @media screen and (max-width: $tablet) {
+            width: 100%;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+    }
+
+    .nav-link {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        flex: 1 0;
+        font-weight: $bold;
+        line-height: 1.5rem;
+        text-align: center;
+        padding: 1rem;
+
+        &.active:after {
+            content: ' ';
+            height: 2px;
+            width: 100%;
+            background: $blue;
+            border: none;
+            position: absolute;
+            left: 0;
+            bottom: -2px;
+        }
+    }
+}
