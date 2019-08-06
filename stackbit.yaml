@@ -1,5 +1,12 @@
-stackbitVersion: ~0.2.34
+stackbitVersion: ~0.2.0
+ssgName: unibit
+buildCommand: unibit build
+publishDir: output
+staticDir: static
 uploadDir: images
+dataDir: data
+pagesDir: content
+pageLayoutKey: layout
 metadata:
   title: Vanilla
   description: Stackbit Vanilla theme
@@ -294,5 +301,3 @@ stackbit_banner:
   name: Vanilla
   create_url: 'https://app.stackbit.com/create?theme=vanilla'
   github_url: 'https://github.com/stackbithq/stackbit-theme-vanilla'
-pagesDir: content
-staticDir: static
