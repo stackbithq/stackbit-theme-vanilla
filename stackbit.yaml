@@ -54,15 +54,20 @@ sourceMapping:
       file: content/index.md
       fieldPath: 'sections[0].image'
   - action: delete
-    condition: 'author.name'
+    condition: 'context.author.name'
     target:
       file: content/index.md
-      fieldPath: 'sections[0].title'
+      fieldPath: 'sections[1]'
+  - action: delete
+    condition: 'context.author.name'
+    target:
+      file: content/index.md
+      fieldPath: 'sections[0].subtitle'
   - source: 
       fieldPath: 'author.tagline'
     target:
       file: content/index.md
-      fieldPath: 'sections[1].content'
+      fieldPath: 'sections[0].title'
 models:
   config:
     type: config
