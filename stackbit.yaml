@@ -57,7 +57,7 @@ sourceMapping:
     condition: 'context.author.name'
     target:
       file: content/index.md
-      fieldPath: 'sections[1]'
+      fieldPath: 'sections[1].content'
   - action: delete
     condition: 'context.author.name'
     target:
