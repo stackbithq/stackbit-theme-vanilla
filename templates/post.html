@@ -16,7 +16,7 @@
         </div>
     </header>
     <div class="content">
-        {{ page.content }}
+        {{ page.content | safe }}
     </div>
 </section>
 {% endblock %}
