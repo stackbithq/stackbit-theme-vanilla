@@ -271,10 +271,6 @@ models:
     extends:
       - section
     fields:
-      - type: number
-        name: num_posts_displayed
-        label: Number of displayed posts
-        required: true
       - name: component
         const: postlist.html
   contentblock:

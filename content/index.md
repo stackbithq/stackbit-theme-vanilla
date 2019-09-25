@@ -18,7 +18,6 @@ sections:
         Pellentesque tempor aliquet dolor, ac consectetur lorem ornare id. Vestibulum sit amet facilisis elit, sit amet rhoncus felis. Nunc rhoncus porttitor sollicitudin. Quisque eu leo metus. Curabitur gravida nibh eu
   - title: Recent Posts
     section_id: posts
-    num_posts_displayed: 6
     component: "postlist.html"
     type: postlist
   - title: A Cat
