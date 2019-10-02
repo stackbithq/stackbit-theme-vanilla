@@ -78,6 +78,22 @@ sourceMapping:
     target:
       file: content/index.md
       fieldPath: 'sections[0].title'
+  - source:
+      fieldPath: 'source.title'
+    target:
+      file: data/footer.yml
+      fieldPath: links[1].text
+  - source:
+      fieldPath: 'source.url'
+    target:
+      file: data/footer.yml
+      fieldPath: links[1].url
+  - source:
+      value: true
+    condition: 'context.source.url'
+    target:
+      file: data/footer.yml
+      fieldPath: links[1].new_window
 models:
   config:
     type: config
