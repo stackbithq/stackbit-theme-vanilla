@@ -10,11 +10,11 @@ params:
       - label: Home
         url: /
       - label: Generic
-        url: /generic
+        url: /generic/
       - label: Elements
-        url: /elements
+        url: /elements/
       - label: Ipsum
-        url: /ipsum
+        url: /ipsum/
   footer:
     content: "&copy; All rights reserved."
     links:
