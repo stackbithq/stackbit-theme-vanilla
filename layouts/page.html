@@ -1,0 +1,18 @@
+{% extends "body.html" %}
+
+{% block content %}
+<!-- Main -->
+<section class="page">
+    <header class="hero">
+        <div class="copy">
+            <h1>{{ page.title }}</h1>
+            {% if page.params.subtitle %}
+            <h3>{{ page.params.subtitle | safe }}</h3>
+            {% endif %}
+        </div>
+    </header>
+    <div class="content">
+        {{ page.content }}
+    </div>
+</section>
+{% endblock %}

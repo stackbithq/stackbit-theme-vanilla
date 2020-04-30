@@ -2,7 +2,26 @@ baseurl: "/"
 title: "Stackbit Vanilla Theme"
 main_js: "assets/js/main.js"
 params:
-  none: ""
+  description: A minimal blogging theme for Stackbit
+  header:
+    title: Stackbit Vanilla
+    has_nav: true
+    nav_links:
+      - label: Home
+        url: /
+      - label: Generic
+        url: /generic
+      - label: Elements
+        url: /elements
+      - label: Ipsum
+        url: /ipsum
+  footer:
+    content: "&copy; All rights reserved."
+    links:
+      - label: Made with Stackbit
+        url: https://www.stackbit.com
+        new_window: true
+    has_social: true
 sass:
   input_file: sass/main.scss
   output_file: assets/css/main.css

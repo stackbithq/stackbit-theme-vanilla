@@ -1,9 +1,22 @@
 <!-- Footer -->
 <footer class="footer container">
-    <div class="copyright">{{ site.data.footer.content | markdownify }}</div>
+    {% if site.params.footer.content %}
+    <div class="copyright">{{ site.params.footer.content | markdownify }}</div>
+    {% endif %}
+    {% if site.params.footer.links %}
     <nav>
-        {%  for link_item in site.data.footer.links %}
-            <a class="subtle-link" href="{{ link_item.url }}" {% if link_item.new_window %}target="_blank"{% endif %}>{{ link_item.text }}</a>
+        {% for link in site.params.footer.links %}
+        <a class="subtle-link" href="{{ link.url }}"{% if link.new_window %} target="_blank" rel="noopener"{% endif %}>{{ link.label }}</a>
         {% endfor %}
     </nav>
+    {% endif %}
+    {% if site.params.footer.has_social %}
+    <div class="social-links">
+        {% for link in site.data.social.links %}
+        {% if link %}
+        <a class="subtle-link" href="{{ link.url }}" target="_blank" rel="noopener">{{ link.title }}</a>
+        {% endif %}
+        {% endfor %}
+    </div>
+    {% endif %}
 </footer>

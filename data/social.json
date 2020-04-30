@@ -1,3 +1,29 @@
 {
-    "links": []
+    "links": [
+      {
+        "type": "twitter",
+        "title": "Twitter",
+        "url": "https://twitter.com/"
+      },
+      {
+        "type": "instagram",
+        "title": "Instagram",
+        "url": "https://www.instagram.com/"
+      },
+      {
+        "type": "github",
+        "title": "GitHub",
+        "url": "https://github.com/"
+      },
+      {
+        "type": "linkedin",
+        "title": "LinkedIn",
+        "url": "https://www.linkedin.com/"
+      },
+      {
+        "type": "devto",
+        "title": "DEV",
+        "url": "https://dev.to/"
+      }
+    ]
 }

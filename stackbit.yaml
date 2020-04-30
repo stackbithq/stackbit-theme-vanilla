@@ -15,23 +15,6 @@ metadata:
   images:
     small: images/demo-256x192.png
     large: images/demo-1024x768.png
-collections:
-  - label: Home
-    source: pages
-    create: true
-    models:
-      - home
-  - label: Pages
-    source: pages
-    create: true
-    models:
-      - page
-      - generic
-  - label: Posts
-    source: pages
-    create: true
-    models:
-      - post
 sourceMapping:
   - source:
       fieldPath: author.name
@@ -41,8 +24,8 @@ sourceMapping:
   - source:
       fieldPath: author.name
     target:
-      file: data/header.yml
-      fieldPath: content
+      file: config.yml
+      fieldPath: params.header.title
   - source:
       fieldPath: author.avatar
     target:
@@ -57,7 +40,7 @@ sourceMapping:
     condition: 'context.author.name'
     target:
       file: content/index.md
-      fieldPath: 'sections[3].text'
+      fieldPath: 'sections[3].content'
   - action: delete
     condition: 'context.author.name'
     target:
@@ -79,71 +62,123 @@ sourceMapping:
       file: content/index.md
       fieldPath: 'sections[0].title'
   - source:
+      fieldPath: 'social.links[0].url'
+    target:
+      file: data/social.json
+      fieldPath: 'links[0].url'
+  - source:
+      fieldPath: 'social.twitter.url'
+    target:
+      file: data/social.json
+      fieldPath: links[0].url
+  - source:
+      fieldPath: 'social.instagram.url'
+    target:
+      file: data/social.json
+      fieldPath: links[1].url
+  - source:
+      fieldPath: 'social.github.url'
+    target:
+      file: data/social.json
+      fieldPath: links[2].url
+  - source:
+      fieldPath: 'social.linkedin.url'
+    target:
+      file: data/social.json
+      fieldPath: links[3].url
+  - source:
+      fieldPath: 'social.devto.url'
+    target:
+      file: data/social.json
+      fieldPath: links[4].url
+  - action: delete
+    condition: 'context.social && !context.social.devto'
+    target:
+      file: data/social.json
+      fieldPath: links[4]
+  - action: delete
+    condition: 'context.social && !context.social.linkedin'
+    target:
+      file: data/social.json
+      fieldPath: links[3]
+  - action: delete
+    condition: 'context.social && !context.social.github'
+    target:
+      file: data/social.json
+      fieldPath: links[2]
+  - action: delete
+    condition: 'context.social && !context.social.instagram'
+    target:
+      file: data/social.json
+      fieldPath: links[1]
+  - action: delete
+    condition: 'context.social && !context.social.twitter'
+    target:
+      file: data/social.json
+      fieldPath: links[0]  
+  - source:
       fieldPath: 'source.title'
     target:
-      file: data/footer.yml
-      fieldPath: links[1].text
+      file: config.yml
+      fieldPath: params.footer.links[1].label
   - source:
       fieldPath: 'source.url'
     target:
-      file: data/footer.yml
-      fieldPath: links[1].url
+      file: config.yml
+      fieldPath: params.footer.links[1].url
   - source:
       value: true
     condition: 'context.source.url'
     target:
-      file: data/footer.yml
-      fieldPath: links[1].new_window
+      file: config.yml
+      fieldPath: params.footer.links[1].new_window
 models:
   config:
     type: config
-    label: Global Site Config
+    label: Site Configuration
     fields:
       - type: string
-        name: none
-        label: None
-        hidden: true
-        description: 'An empty var, used so the site params section will function'
-  header:
-    type: data
-    file: header.yml
-    label: Header Configuration
-    fields:
-      - type: markdown
-        name: content
-        label: Header Content
-      - type: boolean
-        name: has_nav
-        label: Navigation Menu
-        description: Display the navigation bar in the header
-        default: true
-  footer:
-    type: data
-    file: footer.yml
-    label: Footer Configuration
-    fields:
-      - type: markdown
-        name: content
-        label: Footer Content
-      - type: list
-        name: links
-        label: Links
-        description: A list of links to display in the footer of the site
-        items:
-          type: object
-          labelField: text
-          fields:
-            - type: string
-              name: text
-              label: Link text
-            - type: string
-              name: url
-              label: URL
-              widget: url
-            - type: boolean
-              name: new_window
-              label: Open in new window
-              default: true
+        name: description
+        label: Site Description
+        description: The default site description used in meta data
+      - type: object
+        name: header
+        label: Header Configuration
+        fields:
+          - type: string
+            name: title
+            label: Header Title
+            description: The title displayed in the header
+          - type: boolean
+            name: has_nav
+            label: Enable Navigation Menu
+            description: Display the navigation bar in the header
+            default: true
+          - type: list
+            name: nav_links
+            label: Navigation Links
+            description: List of navigation links.
+            items:
+              type: action
+      - type: object
+        name: footer
+        label: Footer Configuration
+        fields:
+          - type: markdown
+            name: content
+            label: Footer Content
+            description: The copyright text displayed in the footer
+          - type: list
+            name: links
+            label: Links
+            description: List of links in the footer
+            items:
+              type: action
+          - type: boolean
+            name: has_social
+            label: Enable Social Links
+            description: Display social links in the footer.
+            default: true
   social:
     type: data
     file: social.json
@@ -152,7 +187,7 @@ models:
       - type: list
         name: links
         label: Social Links
-        description: A list of social links displayed on the left side.
+        description: A list of social links displayed in the footer.
         items:
           type: object
           labelField: type
@@ -160,7 +195,10 @@ models:
             - type: string
               name: type
               label: Type
-              required: true
+              hidden: true
+            - type: string
+              name: title
+              label: Title
             - type: string
               name: url
               label: URL
@@ -179,13 +217,11 @@ models:
       - type: image
         name: avatar
         label: Avatar
-  home:
+  advanced:
     type: page
-    label: Home
+    label: Advanced Page
     hideContent: true
-    template: home
-    singleInstance: true
-    file: index.md
+    layout: advanced
     fields:
       - type: string
         name: title
@@ -195,19 +231,18 @@ models:
       - type: list
         name: sections
         label: Sections
-        description: Home sections
+        description: Page sections
         items:
           type: reference
           labelField: title
           models:
-            - postlist
-            - contentblock
-            - textimageblock
-            - heroblock
+            - section_content
+            - section_hero
+            - section_posts
   page:
     type: page
     label: Page
-    template: page
+    layout: page
     exclude: posts/**
     fields:
       - type: string
@@ -218,38 +253,42 @@ models:
       - type: string
         name: subtitle
         label: Subtitle
-        description: Text that is shown just above the title
+        description: The text displayed just below the title
+      - type: string
+        name: excerpt
+        label: Excerpt
+        description: The excerpt of the page displayed in meta data
   post:
     type: page
     label: Post
     folder: posts
-    template: post
+    layout: post
     fields:
       - type: string
         name: title
         label: Title
-        description: The title of the page
+        description: The title of the post
         required: true
       - type: string
         name: subtitle
         label: Subtitle
-        description: Text that is shown just above the title
+        description: The text displayed just below the title
       - type: image
         name: content_img_path
         label: Image
-        description: The image shown on top of the page
+        description: The image displayed in the single post
+      - type: image
+        name: thumb_img_path
+        label: Alternate Image
+        description: The image displayed in any thumbnails for the post
       - type: string
         name: excerpt
-        label: Home Excerpt
-        description: Excerpt to be displayed in any thumbnails for the post
+        label: Excerpt
+        description: The excerpt of the post displayed in the blog feed and in meta data
       - type: date
         name: date
         label: Date
         required: true
-      - type: image
-        name: thumb_img_path
-        label: Alternate Image
-        description: image to be displayed in any thumbnails for the post
   action:
     type: object
     label: Action
@@ -258,10 +297,16 @@ models:
       - type: string
         name: label
         label: Label
+        required: true
       - type: string
         name: url
         label: URL
+        required: true
         widget: url
+      - type: boolean
+        name: new_window
+        label: Open in new tab/window
+        default: false
   section:
     type: object
     label: Section
@@ -276,55 +321,27 @@ models:
       - type: string
         name: section_id
         label: Element ID
-      - type: string
-        name: component
-        label: Component
-        required: true
-        hidden: true
-  postlist:
-    type: object
-    label: Post List
-    extends:
-      - section
-    fields:
-      - name: component
-        const: postlist.html
-  contentblock:
+        description: A unique identifier that can be used when linking to this section. Must not contain whitespace.
+  section_content:
     type: object
     label: Content Section
     extends:
       - section
     fields:
-      - name: component
-        const: content_block.html
+      - type: image
+        name: image
+        label: Image
+        description: The image of the section
       - type: markdown
         name: content
         label: Content
         description: The text content of the section
-  textimageblock:
+  section_hero:
     type: object
-    label: Content Section With Image
+    label: Hero Section
     extends:
       - section
     fields:
-      - name: component
-        const: text_image_block.html
-      - type: markdown
-        name: text
-        label: Text
-        description: The text content of the section
-      - type: image
-        name: image
-        label: Image
-        description: The image to display with the text
-  heroblock:
-    type: object
-    label: Hero Header With Image
-    extends:
-      - section
-    fields:
-      - name: component
-        const: hero_block.html
       - type: markdown
         name: subtitle
         label: Subtitle
@@ -333,6 +350,11 @@ models:
         name: image
         label: Image
         description: The image to display with the text
+  section_posts:
+    type: object
+    label: Posts Section
+    extends:
+      - section
 stackbit_banner:
   show_banner: true
   name: Vanilla

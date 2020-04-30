@@ -1,10 +1,10 @@
 <!-- Header -->
-<header id='header' class='header container'>
-    <a href='{{ "/" | relative_url }}' class='logo'>{{ site.data.header.content }}</a>
-    {% if site.menus.main and site.data.header.has_nav %}
+<header id="header" class="header container">
+    <a href="{{ "/" | relative_url }}" class="logo">{{ site.params.header.title }}</a>
+    {% if site.params.header.nav_links and site.params.header.has_nav %}
     <nav>
-        {% for item in site.menus.main %}
-        <a class="nav-link{% if page.url == item.url %} active{% endif %}" href="{% if item.url | starts_with('#') %}{{ item.url }}{% else %}{{ item.url | relative_url }}{% endif %}">{{ item.title }}</a>
+        {% for item in site.params.header.nav_links %}
+        <a {{ classNames('nav-link', {'active': page.url == item.url }) }} href="{% if item.url | starts_with('#') %}{{ item.url }}{% else %}{{ item.url | relative_url }}{% endif %}"{% if item.new_window %} target="_blank" rel="noopener"{% endif %}>{{ item.label }}</a>
         {% endfor %}
     </nav>
     {% endif %}

@@ -2,15 +2,13 @@
 title: Home
 sections:
   - section_id: hero
-    component: "hero_block.html"
-    type: heroblock
+    type: section_hero
     title: This is a hero headline.
     subtitle: "### This is a super-cool hero subhead."
     image: images/avatar.png
   - title: Text
     section_id: intro
-    component: "content_block.html"
-    type: contentblock
+    type: section_content
     content: |-
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla orci diam, elementum consectetur elit non, tempus varius leo. In ut bibendum mauris. Vestibulum mattis pharetra enim. Maecenas ornare vulputate nisi sed condimentum. Fusce sit amet cursus nunc. Vivamus malesuada posuere mollis. Aliquam facilisis neque eget ligula aliquam consequat.
         ### This is an H3. Use it for subheads and subsections.
@@ -18,22 +16,16 @@ sections:
         Pellentesque tempor aliquet dolor, ac consectetur lorem ornare id. Vestibulum sit amet facilisis elit, sit amet rhoncus felis. Nunc rhoncus porttitor sollicitudin. Quisque eu leo metus. Curabitur gravida nibh eu
   - title: Recent Posts
     section_id: posts
-    component: "postlist.html"
-    type: postlist
+    type: section_posts
   - title: A Cat
     section_id: cat
-    type: textimageblock
-    component: "text_image_block.html" 
-    text: |-
+    type: section_content
+    image: images/art.svg
+    content: |-
         Hi this is my text and image block. Vis accumsan feugiat adipiscing nisl amet adipiscing accumsan blandit accumsan sapien blandit ac amet faucibus aliquet placerat commodo. 
         Interdum ante aliquet commodo accumsan vis phasellus adipiscing. Ornare a in lacinia. Vestibulum accumsan ac metus massa tempor. Accumsan in lacinia ornare massa amet. Ac interdum ac non praesent. Cubilia lacinia interdum massa faucibus blandit nullam. Accumsan phasellus nunc integer. Accumsan euismod nunc adipiscing lacinia erat ut sit. Arcu amet. 
         Id massa aliquet arcu accumsan lorem amet accumsan.
 
-        Interdum ante aliquet commodo accumsan vis phasellus adipiscing. Ornare a in lacinia. Vestibulum accumsan ac metus massa tempor. Accumsan in lacinia ornare massa amet. Ac interdum ac non praesent. Cubilia lacinia interdum massa faucibus blandit nullam. Accumsan phasellus nunc integer. Accumsan euismod nunc adipiscing lacinia erat ut sit. Arcu amet. 
-    image: images/art.svg
-menus:
-  main:
-    title: Home
-    weight: 1
-template: home
+        Interdum ante aliquet commodo accumsan vis phasellus adipiscing. Ornare a in lacinia. Vestibulum accumsan ac metus massa tempor. Accumsan in lacinia ornare massa amet. Ac interdum ac non praesent. Cubilia lacinia interdum massa faucibus blandit nullam. Accumsan phasellus nunc integer. Accumsan euismod nunc adipiscing lacinia erat ut sit. Arcu amet.
+layout: advanced
 ---

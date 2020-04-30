@@ -1,1 +1,259 @@
-<!DOCTYPE html><html><head><title data-react-helmet="true"></title><script src="/socket.io/socket.io.js"></script></head><body><noscript id="gatsby-noscript">This app works best with JavaScript enabled.</noscript><div id="___gatsby"></div><script src="/assets/js/main.js"></script><script src="/commons.js"></script></body></html>
+<!doctype html>
+<html>
+    <head>    
+        <link rel="stylesheet" type="text/css" href=/assets/css/stackbit-banner.css>
+        <title>Home - Stackbit Vanilla Theme</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+<meta name="description" content="A minimal blogging theme for Stackbit"/>
+<meta name="google" content="notranslate" />
+<link rel="stylesheet" href="/assets/css/main.css">
+
+
+        <script type="text/javascript" src=/assets/js/live-reload.js></script>
+    </head>
+    <body>
+        
+            <div id="theme-bar" class="theme-bar theme-bar-fixed theme-bar-hidden">
+  <div class="theme-bar-left">
+    <div class="theme-bar-name">
+        Vanilla
+    </div>
+  </div>
+  <div class="theme-bar-center">
+    
+    <a
+      class="theme-bar-button theme-bar-button-outlined"
+      href="https://github.com/stackbithq/stackbit-theme-vanilla"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+        <path
+          fill="currentColor"
+          d="M384 144c0-44.2-35.8-80-80-80s-80 35.8-80 80c0 36.4 24.3 67.1 57.5 76.8-.6 16.1-4.2 28.5-11 36.9-15.4 19.2-49.3 22.4-85.2 25.7-28.2 2.6-57.4 5.4-81.3 16.9v-144c32.5-10.2 56-40.5 56-76.3 0-44.2-35.8-80-80-80S0 35.8 0 80c0 35.8 23.5 66.1 56 76.3v199.3C23.5 365.9 0 396.2 0 432c0 44.2 35.8 80 80 80s80-35.8 80-80c0-34-21.2-63.1-51.2-74.6 3.1-5.2 7.8-9.8 14.9-13.4 16.2-8.2 40.4-10.4 66.1-12.8 42.2-3.9 90-8.4 118.2-43.4 14-17.4 21.1-39.8 21.6-67.9 31.6-10.8 54.4-40.7 54.4-75.9zM80 64c8.8 0 16 7.2 16 16s-7.2 16-16 16-16-7.2-16-16 7.2-16 16-16zm0 384c-8.8 0-16-7.2-16-16s7.2-16 16-16 16 7.2 16 16-7.2 16-16 16zm224-320c8.8 0 16 7.2 16 16s-7.2 16-16 16-16-7.2-16-16 7.2-16 16-16z"
+        ></path>
+      </svg>
+      <span>Fork</span>
+    </a>
+    
+    
+    <a
+      class="theme-bar-button theme-bar-button-primary"
+      href="https://app.stackbit.com/create?theme=vanilla"
+    >
+      <svg fill="currentColor" viewBox="0 0 131 107">
+        <defs>
+          <path
+            id="a"
+            d="M116.6 62L66.5 89.9 15.4 62c-1.9-1.1-4.4-.3-5.4 1.6-1.1 1.9-.3 4.4 1.6 5.4l53 29c1.2.7 2.7.7 3.9 0l52-29c1.9-1.1 2.6-3.5 1.5-5.4-1.1-2-3.5-2.7-5.4-1.6zm-95-18.5l44.9-25.4 50 28.9c1.9 1.1 4.4.4 5.5-1.5 1.1-1.9.4-4.4-1.5-5.5l-52-30c-1.2-.7-2.7-.7-4 0l-53 30c-2.7 1.5-2.7 5.4 0 7l53 30c1.9 1.1 4.4.4 5.5-1.5 1.1-1.9.4-4.4-1.5-5.5L21.6 43.5zM1 64.5v-20c-.4-4.6 1.7-9.3 6.3-11.9l53-30c3.9-2.2 8.6-2.2 12.4.1l52 30c4.3 2.5 6.6 7.2 6.2 11.8v20c.4 4.7-2 9.5-6.4 11.9l-52 29c-3.8 2.1-8.3 2.1-12.1 0l-53-29C3 74 .7 69.3 1 64.5z"
+          />
+        </defs>
+        <use fill-rule="evenodd" xlink:href="#a" />
+      </svg>
+      <span>New Site</span>
+    </a>
+    
+  </div>
+  <div class="theme-bar-right">
+    <button
+      id="remove-theme-bar"
+      class="theme-bar-button theme-bar-button-link"
+    >
+      <svg viewBox="0 0 320 512" class="remove-icon">
+        <path
+          fill="currentColor"
+          d="M207.6 256l107.72-107.72c6.23-6.23 6.23-16.34 0-22.58l-25.03-25.03c-6.23-6.23-16.34-6.23-22.58 0L160 208.4 52.28 100.68c-6.23-6.23-16.34-6.23-22.58 0L4.68 125.7c-6.23 6.23-6.23 16.34 0 22.58L112.4 256 4.68 363.72c-6.23 6.23-6.23 16.34 0 22.58l25.03 25.03c6.23 6.23 16.34 6.23 22.58 0L160 303.6l107.72 107.72c6.23 6.23 16.34 6.23 22.58 0l25.03-25.03c6.23-6.23 6.23-16.34 0-22.58L207.6 256z"
+        ></path>
+      </svg>
+    </button>
+  </div>
+</div>
+
+<script>
+  var body = document.querySelector("body");
+  var themebar = document.querySelector("#theme-bar");
+  var hideThemeBar = sessionStorage.getItem('hideThemeBar');
+  if (body && !hideThemeBar) {
+    body.classList.add("has-theme-bar");
+    themebar.classList.remove("theme-bar-hidden");
+  }
+  document
+    .querySelector("#remove-theme-bar")
+    .addEventListener("click", function(e) {
+      e.preventDefault();
+      body.classList.remove("has-theme-bar");
+      themebar.classList.add("theme-bar-hidden");
+      sessionStorage.setItem('hideThemeBar', true);
+    });
+</script>
+
+        
+        
+<div class="wrapper">
+    <!-- Header -->
+<header id="header" class="header container">
+    <a href="/" class="logo">Stackbit Vanilla</a>
+    
+    <nav>
+        
+        <a class="nav-link" href="/">Home</a>
+        
+        <a class="nav-link" href="/generic">Generic</a>
+        
+        <a class="nav-link" href="/elements">Elements</a>
+        
+        <a class="nav-link" href="/ipsum">Ipsum</a>
+        
+    </nav>
+    
+</header>
+
+    <div class="container">
+        
+
+    
+        
+        
+        <!-- Section -->
+
+<section id="hero" class="hero">
+    <img src="/images/avatar.png"/>
+    
+    <div class="copy">
+        
+        <h1>This is a hero headline.</h1>
+        
+        
+        <h3 id="this-is-a-super-cool-hero-subhead">This is a super-cool hero subhead.</h3>
+
+        
+    </div>
+    
+</section>
+    
+        
+        
+        <!-- Section -->
+
+<section id="intro" class="content">
+    
+    
+    <div class="copy">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla orci diam, elementum consectetur elit non, tempus varius leo. In ut bibendum mauris. Vestibulum mattis pharetra enim. Maecenas ornare vulputate nisi sed condimentum. Fusce sit amet cursus nunc. Vivamus malesuada posuere mollis. Aliquam facilisis neque eget ligula aliquam consequat.</p>
+<h3 id="this-is-an-h3-use-it-for-subheads-and-subsections">This is an H3. Use it for subheads and subsections.</h3>
+<p>Donec malesuada, augue eu blandit porta, metus metus auctor leo, non dapibus felis odio non tortor. Mauris sem orci, tristique eget <a href="#">this is an inline link</a> placerat non, eleifend tempor dolor. Quisque sed nisl elit. Praesent pulvinar id urna quis cursus. In hac habitasse platea dictumst. Mauris sed odio magna. Duis felis turpis, posuere at erat nec, condimentum luctus nibh. Nam leo ante, tempor ut tellus vel, lacinia aliquam velit. Mauris ut purus in nisl suscipit feugiat.
+Pellentesque tempor aliquet dolor, ac consectetur lorem ornare id. Vestibulum sit amet facilisis elit, sit amet rhoncus felis. Nunc rhoncus porttitor sollicitudin. Quisque eu leo metus. Curabitur gravida nibh eu</p>
+
+    </div>
+    
+</section>
+    
+        
+        
+        <!-- Section -->
+
+<section id="posts" class="posts">
+    
+    
+    <a href="/posts/magna/" class="article-teaser">
+        <img class="thumbnail" src="/images/art.svg" alt="Magna etiam sed lorem ipsum dolor amet"/>
+        <div class="copy">
+            <h2>Magna etiam sed lorem ipsum dolor amet</h2>
+            <h3 class="publish-date">Published on September 04, 2016</h3>
+            
+            <p class="summary">Phasellus in ante vitae nibh porttitor tempus vitae ut ante. Vestibulum blandit dolor elementum viverra. Sed quat a diam, aliquet tempus felis. Phasellus et magna vitae nibh porttitor tempus vitae.</p>
+            
+            <div class="text-link">Read more</div>
+        </div>
+    </a>
+    
+    <a href="/posts/sed/" class="article-teaser">
+        <img class="thumbnail" src="/images/art.svg" alt="Sed feugiat et mauris adipiscing dolor"/>
+        <div class="copy">
+            <h2>Sed feugiat et mauris adipiscing dolor</h2>
+            <h3 class="publish-date">Published on August 28, 2016</h3>
+            
+            <p class="summary">Phasellus in ante vitae nibh porttitor tempus vitae ut ante. Vestibulum blandit dolor elementum viverra.</p>
+            
+            <div class="text-link">Read more</div>
+        </div>
+    </a>
+    
+    <a href="/posts/tellus/" class="article-teaser">
+        <img class="thumbnail" src="/images/art.svg" alt="Tellus magna dolore sed elementum"/>
+        <div class="copy">
+            <h2>Tellus magna dolore sed elementum</h2>
+            <h3 class="publish-date">Published on August 22, 2016</h3>
+            
+            <p class="summary">Phasellus in ante vitae nibh porttitor tempus vitae ut ante. Vestibulum blandit dolor elementum viverra. Sed quat a diam, aliquet tempus felis. Phasellus et magna vitae nibh porttitor tempus vitae.</p>
+            
+            <div class="text-link">Read more</div>
+        </div>
+    </a>
+    
+</section>
+    
+        
+        
+        <!-- Section -->
+
+<section id="cat" class="content">
+    <img class="inline-image" src="/images/art.svg"/>
+    
+    <div class="copy">
+        <p>Hi this is my text and image block. Vis accumsan feugiat adipiscing nisl amet adipiscing accumsan blandit accumsan sapien blandit ac amet faucibus aliquet placerat commodo. 
+Interdum ante aliquet commodo accumsan vis phasellus adipiscing. Ornare a in lacinia. Vestibulum accumsan ac metus massa tempor. Accumsan in lacinia ornare massa amet. Ac interdum ac non praesent. Cubilia lacinia interdum massa faucibus blandit nullam. Accumsan phasellus nunc integer. Accumsan euismod nunc adipiscing lacinia erat ut sit. Arcu amet. 
+Id massa aliquet arcu accumsan lorem amet accumsan.</p>
+<p>Interdum ante aliquet commodo accumsan vis phasellus adipiscing. Ornare a in lacinia. Vestibulum accumsan ac metus massa tempor. Accumsan in lacinia ornare massa amet. Ac interdum ac non praesent. Cubilia lacinia interdum massa faucibus blandit nullam. Accumsan phasellus nunc integer. Accumsan euismod nunc adipiscing lacinia erat ut sit. Arcu amet.</p>
+
+    </div>
+    
+</section>
+    
+
+
+    </div>
+    <!-- Footer -->
+<footer class="footer container">
+    
+    <div class="copyright"><p>&copy; All rights reserved.</p>
+</div>
+    
+    
+    <nav>
+        
+        <a class="subtle-link" href="https://www.stackbit.com" target="_blank" rel="noopener">Made with Stackbit</a>
+        
+    </nav>
+    
+    
+    <div class="social-links">
+        
+        
+        <a class="subtle-link" href="https://twitter.com/" target="_blank" rel="noopener">Twitter</a>
+        
+        
+        
+        <a class="subtle-link" href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a>
+        
+        
+        
+        <a class="subtle-link" href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
+        
+        
+        
+        <a class="subtle-link" href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a>
+        
+        
+        
+        <a class="subtle-link" href="https://dev.to/" target="_blank" rel="noopener">DEV</a>
+        
+        
+    </div>
+    
+</footer>
+</div>
+
+        <!-- Scripts -->
+<script src="/assets/js/main.js"></script>
+    </body> 
+</html>

@@ -1,0 +1,10 @@
+<!-- Section -->
+{% set section = include_dict.section %}
+<section id="{{ section.section_id }}" class="content">
+    {% if section.image %}<img class="inline-image" src="{{ section.image | relative_url }}"/>{% endif %}
+    {% if section.content %}
+    <div class="copy">
+        {{ section.content | markdownify }}
+    </div>
+    {% endif %}
+</section>
