@@ -6,15 +6,15 @@
     {% if site.params.footer.links %}
     <nav>
         {% for link in site.params.footer.links %}
-        <a class="subtle-link" href="{{ link.url }}"{% if link.new_window %} target="_blank" rel="noopener"{% endif %}>{{ link.label }}</a>
+        <a class="subtle-link" href="{{ link.url | relative_url }}"{% if link.new_window %} target="_blank" rel="noopener"{% endif %}>{{ link.label }}</a>
         {% endfor %}
     </nav>
     {% endif %}
     {% if site.params.footer.has_social %}
     <div class="social-links">
-        {% for link in site.data.social.links %}
+        {% for link in site.params.footer.social_links %}
         {% if link %}
-        <a class="subtle-link" href="{{ link.url }}" target="_blank" rel="noopener">{{ link.title }}</a>
+        <a class="subtle-link" href="{{ link.url | relative_url }}"{% if link.new_window %} target="_blank" rel="noopener"{% endif %}>{{ link.label }}</a>
         {% endif %}
         {% endfor %}
     </div>

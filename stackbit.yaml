@@ -64,58 +64,58 @@ sourceMapping:
   - source:
       fieldPath: 'social.links[0].url'
     target:
-      file: data/social.json
-      fieldPath: 'links[0].url'
+      file: config.yml
+      fieldPath: params.footer.social_links[0].url
   - source:
       fieldPath: 'social.twitter.url'
     target:
-      file: data/social.json
-      fieldPath: links[0].url
+      file: config.yml
+      fieldPath: params.footer.social_links[0].url
   - source:
       fieldPath: 'social.instagram.url'
     target:
-      file: data/social.json
-      fieldPath: links[1].url
+      file: config.yml
+      fieldPath: params.footer.social_links[1].url
   - source:
       fieldPath: 'social.github.url'
     target:
-      file: data/social.json
-      fieldPath: links[2].url
+      file: config.yml
+      fieldPath: params.footer.social_links[2].url
   - source:
       fieldPath: 'social.linkedin.url'
     target:
-      file: data/social.json
-      fieldPath: links[3].url
+      file: config.yml
+      fieldPath: params.footer.social_links[3].url
   - source:
       fieldPath: 'social.devto.url'
     target:
-      file: data/social.json
-      fieldPath: links[4].url
+      file: config.yml
+      fieldPath: params.footer.social_links[4].url
   - action: delete
     condition: 'context.social && !context.social.devto'
     target:
-      file: data/social.json
-      fieldPath: links[4]
+      file: config.yml
+      fieldPath: params.footer.social_links[4]
   - action: delete
     condition: 'context.social && !context.social.linkedin'
     target:
-      file: data/social.json
-      fieldPath: links[3]
+      file: config.yml
+      fieldPath: params.footer.social_links[3]
   - action: delete
     condition: 'context.social && !context.social.github'
     target:
-      file: data/social.json
-      fieldPath: links[2]
+      file: config.yml
+      fieldPath: params.footer.social_links[2]
   - action: delete
     condition: 'context.social && !context.social.instagram'
     target:
-      file: data/social.json
-      fieldPath: links[1]
+      file: config.yml
+      fieldPath: params.footer.social_links[1]
   - action: delete
     condition: 'context.social && !context.social.twitter'
     target:
-      file: data/social.json
-      fieldPath: links[0]  
+      file: config.yml
+      fieldPath: params.footer.social_links[0]
   - source:
       fieldPath: 'source.title'
     target:
@@ -157,7 +157,7 @@ models:
           - type: list
             name: nav_links
             label: Navigation Links
-            description: List of navigation links.
+            description: List of navigation links
             items:
               type: action
       - type: object
@@ -177,32 +177,14 @@ models:
           - type: boolean
             name: has_social
             label: Enable Social Links
-            description: Display social links in the footer.
+            description: Display social links in the footer
             default: true
-  social:
-    type: data
-    file: social.json
-    label: Social Links
-    fields:
-      - type: list
-        name: links
-        label: Social Links
-        description: A list of social links displayed in the footer.
-        items:
-          type: object
-          labelField: type
-          fields:
-            - type: string
-              name: type
-              label: Type
-              hidden: true
-            - type: string
-              name: title
-              label: Title
-            - type: string
-              name: url
-              label: URL
-              widget: url
+          - type: list
+            name: social_links
+            label: Social Links
+            description: List of social links in the footer
+            items:
+              type: action
   author:
     type: data
     file: author.json
@@ -228,6 +210,10 @@ models:
         label: Title
         description: The title of the page
         required: true
+      - type: string
+        name: excerpt
+        label: Excerpt
+        description: The excerpt of the page displayed in meta data
       - type: list
         name: sections
         label: Sections

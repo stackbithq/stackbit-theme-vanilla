@@ -2,7 +2,7 @@ baseurl: "/"
 title: "Stackbit Vanilla Theme"
 main_js: "assets/js/main.js"
 params:
-  description: A minimal blogging theme for Stackbit
+  description: A vanilla theme for Stackbit
   header:
     title: Stackbit Vanilla
     has_nav: true
@@ -22,6 +22,22 @@ params:
         url: https://www.stackbit.com
         new_window: true
     has_social: true
+    social_links:
+      - label: Twitter
+        url: https://twitter.com/
+        new_window: true
+      - label: Instagram
+        url: https://www.instagram.com/
+        new_window: true
+      - label: GitHub
+        url: https://github.com/
+        new_window: true
+      - label: LinkedIn
+        url: https://www.linkedin.com/
+        new_window: true
+      - label: DEV
+        url: https://dev.to/
+        new_window: true
 sass:
   input_file: sass/main.scss
   output_file: assets/css/main.css
