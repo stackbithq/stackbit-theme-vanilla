@@ -1,4 +1,4 @@
-stackbitVersion: ~0.2.0
+stackbitVersion: ~0.3.0
 ssgName: unibit
 buildCommand: unibit build
 publishDir: output
@@ -149,50 +149,63 @@ models:
         name: description
         label: Site Description
         description: The default site description used in meta data
-      - type: object
+      - type: model
         name: header
         label: Header Configuration
-        fields:
-          - type: string
-            name: title
-            label: Header Title
-            description: The title displayed in the header
-          - type: boolean
-            name: has_nav
-            label: Enable Navigation Menu
-            description: Display the navigation bar in the header
-            default: true
-          - type: list
-            name: nav_links
-            label: Navigation Links
-            description: List of navigation links
-            items:
-              type: action
-      - type: object
+        models: [header]
+      - type: model
         name: footer
         label: Footer Configuration
-        fields:
-          - type: markdown
-            name: content
-            label: Footer Content
-            description: The copyright text displayed in the footer
-          - type: list
-            name: links
-            label: Links
-            description: List of links in the footer
-            items:
-              type: action
-          - type: boolean
-            name: has_social
-            label: Enable Social Links
-            description: Display social links in the footer
-            default: true
-          - type: list
-            name: social_links
-            label: Social Links
-            description: List of social links in the footer
-            items:
-              type: action
+        models: [footer]
+  header:
+    type: object
+    label: Header Configuration
+    labelField: title
+    fields:
+      - type: string
+        name: title
+        label: Header Title
+        description: The title displayed in the header
+      - type: boolean
+        name: has_nav
+        label: Enable Navigation Menu
+        description: Display the navigation bar in the header
+        default: true
+      - type: list
+        name: nav_links
+        label: Navigation Links
+        description: List of navigation links
+        items:
+          type: model
+          models: [action]
+  footer:
+    type: object
+    label: Footer Configuration
+    labelField: content
+    fields:
+      - type: string
+        name: content
+        label: Footer Content
+        description: The copyright text displayed in the footer
+      - type: list
+        name: links
+        label: Links
+        description: List of links in the footer
+        items:
+          type: model
+          models: [action]
+      - type: boolean
+        name: has_social
+        label: Enable Social Links
+        description: Display social links in the footer
+        default: true
+      - type: list
+        name: social_links
+        label: Social Links
+        description: List of social links in the footer
+        items:
+          type: model
+          models: [action]
   author:
     type: data
     file: author.json
@@ -227,7 +240,7 @@ models:
         label: Sections
         description: Page sections
         items:
-          type: reference
+          type: model
           labelField: title
           models:
             - section_content

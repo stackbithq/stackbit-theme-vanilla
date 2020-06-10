@@ -1,7 +1,7 @@
 <!-- Footer -->
 <footer class="footer container">
     {% if site.params.footer.content %}
-    <div class="copyright">{{ site.params.footer.content | markdownify }}</div>
+    <div class="copyright">{{ site.params.footer.content | safe }}</div>
     {% endif %}
     {% if site.params.footer.links %}
     <nav>

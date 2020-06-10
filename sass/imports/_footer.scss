@@ -7,16 +7,12 @@
     font-size: 12px;
 
     .copyright {
+        color: rgba(0, 0, 0, .65);
+        font-size: inherit;
+        font-style: italic;
+        line-height: inherit;
         margin-right: 1rem;
-
-        & > p {
-            color: rgba(0, 0, 0, .65);
-            margin: 0;
-            font-size: inherit;
-            font-style: italic;
-            line-height: inherit;
-            font-weight: inherit;
-        }
+        font-weight: inherit;
     }
 
     nav:not(:last-child) {
