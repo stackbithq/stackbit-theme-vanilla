@@ -8,7 +8,7 @@
         <h1>{{ section.title }}</h1>
         {% endif %}
         {% if section.subtitle %}
-        {{ section.subtitle | markdownify }}
+        <div>{{ section.subtitle | markdownify }}</div>
         {% endif %}
     </div>
     {% endif %}
