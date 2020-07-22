@@ -4,7 +4,9 @@
     {% if site.params.header.nav_links and site.params.header.has_nav %}
     <nav>
         {% for item in site.params.header.nav_links %}
-        <a {{ classNames('nav-link', {'active': page.url == item.url }) }} href="{% if item.url | starts_with('#') %}{{ item.url }}{% else %}{{ item.url | relative_url }}{% endif %}"{% if item.new_window %} target="_blank" rel="noopener"{% endif %}>{{ item.label }}</a>
+            {% set pageUrl = page.url | trim('/') %}
+            {% set itemUrl = item.url | trim('/') %}
+            <a {{ classNames('nav-link', {'active': pageUrl == itemUrl }) }} href="{% if item.url | starts_with('#') %}{{ item.url }}{% else %}{{ item.url | relative_url }}{% endif %}"{% if item.new_window %} target="_blank" rel="noopener"{% endif %}>{{ item.label }}</a>
         {% endfor %}
     </nav>
     {% endif %}
