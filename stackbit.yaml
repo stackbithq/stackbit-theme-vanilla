@@ -362,6 +362,15 @@ models:
     label: Posts Section
     extends:
       - section
+    fields:
+      - type: boolean
+        name: has_more_link
+        label: Show read more link
+        description: Display the read more link below the post excerpt
+        default: true
+      - type: string
+        name: more_link_text
+        label: Read more link label
 stackbit_banner:
   show_banner: true
   name: Vanilla

@@ -11,7 +11,9 @@
             {% if post.params.excerpt %}
             <p class="summary">{{ post.params.excerpt }}</p>
             {% endif %}
-            <div class="text-link">Read more</div>
+            {% if section.has_more_link == true and section.more_link_text %}
+            <div class="text-link">{{ section.more_link_text }}</div>
+            {% endif %}
         </div>
     </a>
     {% endfor %}
