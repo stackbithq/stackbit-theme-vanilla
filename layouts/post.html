@@ -4,7 +4,7 @@
 <!-- Main -->
 <section class="post">
     {% if page.params.content_img_path %}
-    <img class="header-image" src="{{ page.params.content_img_path | relative_url }}" alt=""/>
+    <img class="header-image" src="{{ page.params.content_img_path | relative_url }}" alt="{{ page.params.content_img_alt }}"/>
     {% endif %}
     <header class="hero">
         <div class="copy">

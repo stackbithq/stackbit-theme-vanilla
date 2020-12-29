@@ -6,7 +6,10 @@
     {% if site.params.footer.links %}
     <nav>
         {% for link in site.params.footer.links %}
-        <a class="subtle-link" href="{{ link.url | relative_url }}"{% if link.new_window %} target="_blank" rel="noopener"{% endif %}>{{ link.label }}</a>
+        <a href="{{ link.url | relative_url }}"
+            {% if link.new_window %} target="_blank"{% endif %}
+            {% if link.new_window or link.no_follow %} rel="{% if link.new_window %}noopener {% endif %}{% if link.no_follow %}nofollow{% endif %}"{% endif %}
+            class="subtle-link">{{ link.label }}</a>
         {% endfor %}
     </nav>
     {% endif %}
@@ -14,7 +17,10 @@
     <div class="social-links">
         {% for link in site.params.footer.social_links %}
         {% if link %}
-        <a class="subtle-link" href="{{ link.url | relative_url }}"{% if link.new_window %} target="_blank" rel="noopener"{% endif %}>{{ link.label }}</a>
+        <a href="{{ link.url | relative_url }}"
+            {% if link.new_window %} target="_blank"{% endif %}
+            {% if link.new_window or link.no_follow %} rel="{% if link.new_window %}noopener {% endif %}{% if link.no_follow %}nofollow{% endif %}"{% endif %}
+            class="subtle-link">{{ link.label }}</a>
         {% endif %}
         {% endfor %}
     </div>

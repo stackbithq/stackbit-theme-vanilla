@@ -6,7 +6,10 @@
         {% for item in site.params.header.nav_links %}
             {% set pageUrl = page.url | trim('/') %}
             {% set itemUrl = item.url | trim('/') %}
-            <a {{ classNames('nav-link', {'active': pageUrl == itemUrl }) }} href="{% if item.url | starts_with('#') %}{{ item.url }}{% else %}{{ item.url | relative_url }}{% endif %}"{% if item.new_window %} target="_blank" rel="noopener"{% endif %}>{{ item.label }}</a>
+            <a href="{% if item.url | starts_with('#') %}{{ item.url }}{% else %}{{ item.url | relative_url }}{% endif %}"
+                {% if item.new_window %} target="_blank"{% endif %}
+                {% if item.new_window or item.no_follow %} rel="{% if item.new_window %}noopener {% endif %}{% if item.no_follow %}nofollow{% endif %}"{% endif %}
+                {{ classNames('nav-link', {'active': pageUrl == itemUrl }) }}>{{ item.label }}</a>
         {% endfor %}
     </nav>
     {% endif %}

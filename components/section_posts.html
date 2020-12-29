@@ -4,7 +4,7 @@
     {% set display_posts = getPages("/posts") %}
     {% for post in display_posts | sort(true, true, "date") %}
     <a href="{{ post.url | relative_url }}" class="article-teaser">
-        {% if post.params.thumb_img_path %}<img class="thumbnail" src="{{ post.params.thumb_img_path | relative_url }}" alt="{{ post.params.title }}"/>{% endif %}
+        {% if post.params.thumb_img_path %}<img class="thumbnail" src="{{ post.params.thumb_img_path | relative_url }}" alt="{{ post.params.thumb_img_alt }}"/>{% endif %}
         <div class="copy">
             <h2>{{ post.params.title }}</h2>
             <h3 class="publish-date">Published on {{ post.date | date_format("%B %d, %Y") }}</h3>

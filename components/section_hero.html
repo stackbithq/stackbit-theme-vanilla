@@ -1,7 +1,7 @@
 <!-- Section -->
 {% set section = include_dict.section %}
 <section id="{{ include_dict.section.section_id }}" class="hero">
-    {% if section.image or site.data.author.avatar %}<img src="{% if section.image %}{{ section.image | relative_url }}{% else %}{{ site.data.author.avatar | relative_url }}{% endif %}"/>{% endif %}
+    {% if section.image or site.data.author.avatar %}<img src="{% if section.image %}{{ section.image | relative_url }}{% else %}{{ site.data.author.avatar | relative_url }}{% endif %}" alt="{% if section.image %}{{ section.image_alt }}{% else %}{{ site.data.author.avatar_alt }}{% endif %}" />{% endif %}
     {% if section.title or section.subtitle %}
     <div class="copy">
         {% if section.title %}

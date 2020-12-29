@@ -3,6 +3,7 @@ title: Sed feugiat et mauris adipiscing dolor
 excerpt: Phasellus in ante vitae nibh porttitor tempus vitae ut ante. Vestibulum blandit dolor elementum viverra.
 date: 2016-08-28
 thumb_img_path: images/art.svg
+thumb_img_alt: Geometric pattern
 layout: post
 ---
 
