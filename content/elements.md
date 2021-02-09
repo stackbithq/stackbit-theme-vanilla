@@ -1,7 +1,26 @@
 ---
-layout: page
 title: UI Kit
 subtitle: Vanilla styleguide.
+seo:
+  title: UI Kit
+  description: This is the UI kit page
+  extra:
+    - name: og:type
+      value: website
+      keyName: property
+    - name: og:title
+      value: UI Kit
+      keyName: property
+    - name: og:description
+      value: This is the UI kit page
+      keyName: property
+    - name: twitter:card
+      value: summary
+    - name: twitter:title
+      value: UI Kit
+    - name: twitter:description
+      value: This is the UI kit page
+layout: page
 ---
 
 # This is an H1
