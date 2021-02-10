@@ -1,8 +1,7 @@
 baseurl: "/"
 title: "Stackbit Vanilla Theme"
-main_js: "assets/js/main.js"
+init_js: "js/init.js"
 params:
-  description: A vanilla theme for Stackbit
   header:
     title: Stackbit Vanilla
     has_nav: true
@@ -37,7 +36,7 @@ params:
         new_window: true
 sass:
   input_file: sass/main.scss
-  output_file: assets/css/main.css
+  output_file: css/main.css
   indentWidth: 4
   outputStyle: nested
   precision: 10
