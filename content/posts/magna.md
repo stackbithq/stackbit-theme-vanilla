@@ -10,7 +10,7 @@ seo:
   description: Phasellus in ante vitae nibh porttitor tempus vitae ut ante
   extra:
     - name: og:type
-      value: website
+      value: article
       keyName: property
     - name: og:title
       value: Magna etiam sed lorem ipsum dolor amet
