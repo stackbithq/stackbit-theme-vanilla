@@ -64,7 +64,7 @@ sourceMapping:
     target:
       file: content/index.md
       fieldPath: 'sections[0].subtitle'
-  - source: 
+  - source:
       fieldPath: 'author.tagline'
     target:
       file: content/index.md
@@ -128,18 +128,18 @@ sourceMapping:
       fieldPath: 'source.title'
     target:
       file: config.yml
-      fieldPath: params.footer.links[1].label
+      fieldPath: params.footer.links[0].label
   - source:
       fieldPath: 'source.url'
     target:
       file: config.yml
-      fieldPath: params.footer.links[1].url
+      fieldPath: params.footer.links[0].url
   - source:
       value: true
     condition: 'context.source.url'
     target:
       file: config.yml
-      fieldPath: params.footer.links[1].new_window
+      fieldPath: params.footer.links[0].new_window
 models:
   config:
     type: config
