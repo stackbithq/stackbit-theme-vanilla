@@ -328,6 +328,7 @@ models:
         label: URL
         required: true
         widget: url
+        default: "#"
       - type: boolean
         name: new_window
         label: Open in new tab/window
