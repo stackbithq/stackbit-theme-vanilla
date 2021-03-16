@@ -1,0 +1,58 @@
+{
+    "title": "Stackbit Vanilla Theme",
+    "path_prefix": "/",
+    "favicon": "images/avatar.png",
+    "header": {
+        "title": "Stackbit Vanilla",
+        "has_nav": true,
+        "nav_links": [
+            {
+                "label": "Home",
+                "url": "/"
+            },
+            {
+                "label": "Generic",
+                "url": "/generic/"
+            },
+            {
+                "label": "Elements",
+                "url": "/elements/"
+            },
+            {
+                "label": "Ipsum",
+                "url": "/ipsum/"
+            }
+        ]
+    },
+    "footer": {
+        "content": "&copy; Stackbit. All rights reserved. This Jamstack site was created with <a href=\"https://www.stackbit.com/?utm_source=deployed-footer\" target=\"_blank\" rel=\"noopener\">Stackbit</a>. Create yours <a href=\"https://app.stackbit.com/create?theme=vanilla&utm_source=deployed-footer\" target=\"_blank\" rel=\"noopener\">now</a>",
+        "has_social": true,
+        "social_links": [
+            {
+                "label": "Twitter",
+                "url": "https://twitter.com/",
+                "new_window": true
+            },
+            {
+                "label": "Instagram",
+                "url": "https://www.instagram.com/",
+                "new_window": true
+            },
+            {
+                "label": "GitHub",
+                "url": "https://github.com/",
+                "new_window": true
+            },
+            {
+                "label": "LinkedIn",
+                "url": "https://www.linkedin.com/",
+                "new_window": true
+            },
+            {
+                "label": "DEV",
+                "url": "https://dev.to/",
+                "new_window": true
+            }
+        ]
+    }
+}

@@ -1,0 +1,14 @@
+/*universal styles*/
+@import 'imports/vars';
+@import 'imports/reset';
+@import 'imports/global';
+@import 'imports/typography';
+@import 'imports/buttons';
+
+/*partial styles*/
+@import 'imports/header';
+@import 'imports/hero';
+@import 'imports/section-content';
+@import 'imports/article-teaser';
+@import 'imports/footer';
+@import 'imports/banner';

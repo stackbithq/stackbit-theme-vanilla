@@ -1,0 +1,474 @@
+stackbitVersion: ~0.3.0
+ssgName: nextjs
+buildCommand: npm run build
+publishDir: out
+assets:
+  referenceType: static
+  staticDir: public
+  uploadDir: images
+  publicPath: /
+dataDir: content/data
+pagesDir: content/pages
+pageLayoutKey: layout
+pageData:
+  - pagePath: /
+    initialExpandedPaths:
+      - '[0]'
+      - '[0].fields.sections'
+      - '[0].fields.sections.items[0]'
+      - '[0].fields.sections.items[0].fields.title'
+      - '[0].fields.sections.items[0].fields.subtitle'
+sourceMapping:
+  - source:
+      fieldPath: author.name
+    target:
+      file: data/author.json
+      fieldPath: name
+  - source:
+      fieldPath: author.name
+    target:
+      file: config.yml
+      fieldPath: params.header.title
+  - source:
+      fieldPath: author.avatar
+    target:
+      file: data/author.json
+      fieldPath: avatar
+  - source:
+      fieldPath: author.avatar
+    target:
+      file: content/index.md
+      fieldPath: 'sections[0].image'
+  - action: delete
+    condition: context.author.name
+    target:
+      file: content/index.md
+      fieldPath: 'sections[3].content'
+  - action: delete
+    condition: context.author.name
+    target:
+      file: content/index.md
+      fieldPath: 'sections[3].image'
+  - action: delete
+    condition: context.author.name
+    target:
+      file: content/index.md
+      fieldPath: 'sections[1].content'
+  - action: delete
+    condition: context.author.name
+    target:
+      file: content/index.md
+      fieldPath: 'sections[0].subtitle'
+  - source:
+      fieldPath: author.tagline
+    target:
+      file: content/index.md
+      fieldPath: 'sections[0].title'
+  - source:
+      fieldPath: 'social.links[0].url'
+    target:
+      file: config.yml
+      fieldPath: 'params.footer.social_links[0].url'
+  - source:
+      fieldPath: social.twitter.url
+    target:
+      file: config.yml
+      fieldPath: 'params.footer.social_links[0].url'
+  - source:
+      fieldPath: social.instagram.url
+    target:
+      file: config.yml
+      fieldPath: 'params.footer.social_links[1].url'
+  - source:
+      fieldPath: social.github.url
+    target:
+      file: config.yml
+      fieldPath: 'params.footer.social_links[2].url'
+  - source:
+      fieldPath: social.linkedin.url
+    target:
+      file: config.yml
+      fieldPath: 'params.footer.social_links[3].url'
+  - source:
+      fieldPath: social.devto.url
+    target:
+      file: config.yml
+      fieldPath: 'params.footer.social_links[4].url'
+  - action: delete
+    condition: context.social && !context.social.devto
+    target:
+      file: config.yml
+      fieldPath: 'params.footer.social_links[4]'
+  - action: delete
+    condition: context.social && !context.social.linkedin
+    target:
+      file: config.yml
+      fieldPath: 'params.footer.social_links[3]'
+  - action: delete
+    condition: context.social && !context.social.github
+    target:
+      file: config.yml
+      fieldPath: 'params.footer.social_links[2]'
+  - action: delete
+    condition: context.social && !context.social.instagram
+    target:
+      file: config.yml
+      fieldPath: 'params.footer.social_links[1]'
+  - action: delete
+    condition: context.social && !context.social.twitter
+    target:
+      file: config.yml
+      fieldPath: 'params.footer.social_links[0]'
+  - source:
+      fieldPath: source.title
+    target:
+      file: config.yml
+      fieldPath: 'params.footer.links[0].label'
+  - source:
+      fieldPath: source.url
+    target:
+      file: config.yml
+      fieldPath: 'params.footer.links[0].url'
+  - source:
+      value: true
+    condition: context.source.url
+    target:
+      file: config.yml
+      fieldPath: 'params.footer.links[0].new_window'
+models:
+  config:
+    type: data
+    label: Site Configuration
+    fields:
+      - type: string
+        name: title
+        label: Title
+        description: Site title
+        required: true
+      - type: string
+        name: path_prefix
+        label: Base URL
+        description: >-
+          The base URL of this site. Useful for sites hosted under specific
+          path, e.g.: https://www.example.com/my-site/
+        required: true
+        hidden: true
+      - type: string
+        name: domain
+        label: Domain
+        description: >-
+          The domain of your site, including the protocol, e.g.
+          https://www.example.com/
+      - type: image
+        name: favicon
+        label: Favicon
+        description: A square icon that represents your website
+      - type: model
+        name: header
+        label: Header Configuration
+        models:
+          - header
+      - type: model
+        name: footer
+        label: Footer Configuration
+        models:
+          - footer
+    file: config.json
+  header:
+    type: object
+    label: Header Configuration
+    labelField: title
+    fields:
+      - type: string
+        name: title
+        label: Header Title
+        description: The title displayed in the header
+      - type: boolean
+        name: has_nav
+        label: Enable Navigation Menu
+        description: Display the navigation bar in the header
+        default: true
+      - type: list
+        name: nav_links
+        label: Navigation Links
+        description: List of navigation links
+        items:
+          type: model
+          models:
+            - action
+  footer:
+    type: object
+    label: Footer Configuration
+    labelField: content
+    fields:
+      - type: string
+        name: content
+        label: Footer Content
+        description: The copyright text displayed in the footer
+      - type: list
+        name: links
+        label: Links
+        description: List of links in the footer
+        items:
+          type: model
+          models:
+            - action
+      - type: boolean
+        name: has_social
+        label: Enable Social Links
+        description: Display social links in the footer
+        default: true
+      - type: list
+        name: social_links
+        label: Social Links
+        description: List of social links in the footer
+        items:
+          type: model
+          models:
+            - action
+  author:
+    type: data
+    file: author.json
+    label: Author
+    fields:
+      - type: string
+        name: name
+        label: Name
+      - type: string
+        name: email
+        label: Email
+      - type: image
+        name: avatar
+        label: Author Image
+      - type: string
+        name: avatar_alt
+        label: Author Image Alt Text
+        description: The alt text of the author image
+  advanced:
+    type: page
+    label: Advanced Page
+    hideContent: true
+    layout: advanced
+    fields:
+      - type: string
+        name: title
+        label: Title
+        description: The title of the page
+        required: true
+      - type: list
+        name: sections
+        label: Sections
+        description: Page sections
+        items:
+          type: model
+          models:
+            - section_content
+            - section_hero
+            - section_posts
+      - type: model
+        name: seo
+        models:
+          - stackbit_page_meta
+  page:
+    type: page
+    label: Page
+    layout: page
+    exclude: posts/**
+    fields:
+      - type: string
+        name: title
+        label: Title
+        description: The title of the page
+        required: true
+      - type: string
+        name: subtitle
+        label: Subtitle
+        description: The text displayed just below the title
+      - type: model
+        name: seo
+        models:
+          - stackbit_page_meta
+  post:
+    type: page
+    urlPath: '/posts/{slug}'
+    label: Post
+    folder: posts
+    layout: post
+    fields:
+      - type: string
+        name: title
+        label: Title
+        description: The title of the post
+        required: true
+      - type: string
+        name: subtitle
+        label: Subtitle
+        description: The text displayed just below the title
+      - type: image
+        name: content_img_path
+        label: Image (single post)
+        description: The image displayed in the single post
+      - type: string
+        name: content_img_alt
+        label: Image alt text (single post)
+        description: The alt text of the blog feed image
+      - type: image
+        name: thumb_img_path
+        label: Image (blog feed)
+        description: The image displayed in the blog feed
+      - type: string
+        name: thumb_img_alt
+        label: Image alt text (blog feed)
+        description: The alt text of the blog feed image
+      - type: string
+        name: excerpt
+        label: Excerpt
+        description: The excerpt of the post displayed in the blog feed
+      - type: date
+        name: date
+        label: Date
+        required: true
+      - type: model
+        name: seo
+        models:
+          - stackbit_page_meta
+  action:
+    type: object
+    label: Action
+    labelField: label
+    fields:
+      - type: string
+        name: label
+        label: Label
+        required: true
+      - type: string
+        name: url
+        label: URL
+        required: true
+        default: '#'
+      - type: boolean
+        name: new_window
+        label: Open in new tab/window
+        default: false
+      - type: boolean
+        name: no_follow
+        label: No follow
+        default: false
+        description: Add rel="nofollow" attribute to the link
+  section:
+    type: object
+    label: Section
+    labelField: title
+    fields:
+      - type: string
+        name: title
+        label: Section Title
+        description: >-
+          The section title (Used by the CMS, even if it is not displayed in the
+          section)
+      - type: string
+        name: section_id
+        label: Element ID
+        description: >-
+          A unique identifier that can be used when linking to this section.
+          Must not contain whitespace.
+  section_content:
+    type: object
+    label: Content Section
+    extends:
+      - section
+    fields:
+      - type: image
+        name: image
+        label: Image
+        description: The image of the section
+      - type: string
+        name: image_alt
+        label: Image Alt Text
+        description: The alt text of the section image
+      - type: markdown
+        name: content
+        label: Content
+        description: The text content of the section
+  section_hero:
+    type: object
+    label: Hero Section
+    extends:
+      - section
+    fields:
+      - type: markdown
+        name: subtitle
+        label: Subtitle
+        description: The section subtitle
+      - type: image
+        name: image
+        label: Image
+        description: The image to display with the text
+      - type: string
+        name: image_alt
+        label: Image Alt Text
+        description: The alt text of the image
+  section_posts:
+    type: object
+    label: Posts Section
+    extends:
+      - section
+    fields:
+      - type: boolean
+        name: has_more_link
+        label: Show read more link
+        description: Display the read more link below the post excerpt
+        default: true
+      - type: string
+        name: more_link_text
+        label: Read more link label
+  stackbit_page_meta:
+    type: object
+    label: Page meta data
+    fields:
+      - type: string
+        name: title
+        label: Title
+        description: The page title that goes into the <title> tag
+        default: ''
+      - type: string
+        name: description
+        label: Description
+        description: The page description that goes into the <meta name="description"> tag
+        default: ''
+      - type: list
+        name: robots
+        label: Robots
+        description: The items that go into the <meta name="robots"> tag
+        items:
+          type: enum
+          options:
+            - all
+            - index
+            - follow
+            - noindex
+            - nofollow
+            - noimageindex
+            - notranslate
+            - none
+      - type: list
+        name: extra
+        label: Extra
+        description: >-
+          Additional definition for specific meta tags such as open-graph,
+          twitter, etc.
+        items:
+          type: object
+          labelField: name
+          fields:
+            - type: string
+              name: name
+              default: ''
+            - type: string
+              name: value
+              default: ''
+            - type: string
+              name: keyName
+              default: name
+            - type: boolean
+              name: relativeUrl

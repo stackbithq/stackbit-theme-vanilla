@@ -1,0 +1,58 @@
+.post .hero {
+    margin-bottom: 0;
+
+    img {
+        border-radius: 0;
+    }
+}
+
+.hero {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin: 0 0 1.5rem;
+
+    @media screen and (max-width: $tablet) {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    img {
+        height: 88px;
+        min-height: 100%;
+        margin: 0 1.5rem 0 0;
+        border-radius: 100%;
+
+        @media screen and (max-width: $tablet) {
+            margin: 0 auto 2rem;
+            width: 50%;
+            height: auto;
+            min-height: auto;
+        }
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-weight: $light;
+    }
+
+    .copy {
+        text-align: left;
+        margin: 0;
+        @media screen and (max-width: $tablet) {
+            align-self: flex-start;
+        }
+    }
+
+    .publish-date {
+        color: rgba(0, 0, 0, 0.5);
+        font-weight: $regular;
+        font-style: italic;
+        margin-bottom: 1em;
+        display: block;
+    }
+}

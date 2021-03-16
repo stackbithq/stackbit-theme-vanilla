@@ -1,0 +1,48 @@
+.article-teaser {
+    display: flex;
+    align-items: flex-start;
+    user-select: none;
+    color: black;
+    margin-bottom: 2.5rem;
+
+    @media screen and (max-width: $tablet) {
+        flex-direction: column;
+    }
+
+    &:after {
+        display: none;
+    }
+
+    .thumbnail {
+        flex: 1 0 auto;
+        width: 100%;
+        height: auto;
+        max-width: $xxl;
+        max-height: $xxl;
+        margin: 0 1.5rem 0 0;
+
+        @media screen and (max-width: $tablet) {
+            max-width: 100%;
+            max-height: none;
+            margin: 0 0 1.5rem 0;
+        }
+    }
+
+    .publish-date {
+        font-style: italic;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 12px;
+        font-weight: $regular;
+        margin: 0;
+    }
+
+    .summary {
+        margin: 0.5rem 0 1rem 0;
+    }
+
+    .text-link {
+        display: inline-block;
+        font-weight: $light;
+        font-size: 18px;
+    }
+}

@@ -1,0 +1,119 @@
+html {
+    height: 100%;
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body {
+    min-height: 100%;
+}
+
+html,
+body,
+section {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    max-width: 848px;
+    min-height: 100vh;
+    padding: 0 $small;
+    margin: 0 auto;
+}
+
+.container {
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+}
+
+hr {
+    width: $xl;
+    margin: 1rem auto;
+    border: none;
+    background: rgba(0, 0, 0, 0.1);
+    height: 1px;
+}
+
+blockquote {
+    color: rgba(0, 0, 0, 0.7);
+    font-style: italic;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    box-sizing: border-box;
+    margin: 1rem 0 1rem 1.5rem;
+    padding: 0.5rem 1.5rem;
+    border-left: 4px solid rgba(66, 133, 244, 0.2);
+}
+
+.clearfix:after {
+    content: ' ';
+    display: table;
+    clear: both;
+}
+
+.header-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 2.5rem 0;
+}
+
+.content {
+    margin: 0 0 1rem 0;
+
+    .inline-image {
+        float: left;
+        max-width: calc(50% - 1rem);
+        margin: 1rem 1.5rem 1rem 0;
+
+        @media screen and (max-width: $mobile) {
+            display: block;
+            max-width: 100%;
+            margin: 1rem 0;
+            width: 100%;
+        }
+    }
+
+    .block-image {
+        display: block;
+        margin: 0 auto 2.5rem;
+        @media screen and (max-width: $mobile) {
+            width: 100%;
+        }
+    }
+
+    img {
+        max-width: 100%;
+    }
+}
+
+iframe {
+    display: block;
+    max-width: 100%;
+    margin: 1rem auto;
+}
+
+figcaption {
+    color: $gray;
+    text-align: center;
+    font-size: $tiny;
+    margin-bottom: 1rem;
+}
+
+.twitter-tweet {
+    display: none;
+}
+
+pre {
+    white-space: pre-wrap;
+}
