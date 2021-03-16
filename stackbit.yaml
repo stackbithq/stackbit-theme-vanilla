@@ -245,7 +245,6 @@ models:
         description: Page sections
         items:
           type: model
-          labelField: title
           models:
             - section_content
             - section_hero
@@ -327,7 +326,6 @@ models:
         name: url
         label: URL
         required: true
-        widget: url
         default: "#"
       - type: boolean
         name: new_window
@@ -432,7 +430,6 @@ models:
             - noimageindex
             - notranslate
             - none
-          default: all
       - type: list
         name: extra
         label: Extra
